@@ -697,57 +697,6 @@
       white-space: nowrap;
     }
 
-    .signature-card { grid-column: 1 / -1; }
-
-    .signature-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .signature-fields {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 17px 16px;
-    }
-
-    .signature-panel {
-      min-height: 166px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px dashed #cdbed1;
-      border-radius: 16px;
-      padding: 16px;
-      background: #fbf9fc;
-    }
-
-    .signature-preview {
-      display: none;
-      max-width: 250px;
-      max-height: 72px;
-      object-fit: contain;
-      object-position: left center;
-      margin: 0 auto 9px;
-    }
-
-    .signature-preview.show { display: block; }
-
-    .signature-status {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    .signature-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-top: 13px;
-    }
-
     .action-bar {
       grid-column: 1 / -1;
       position: sticky;
@@ -1197,16 +1146,6 @@
       padding: 0 3px 2px;
     }
 
-    .preparer-signature {
-      display: none;
-      width: 86px;
-      max-height: 32px;
-      object-fit: contain;
-      object-position: left bottom;
-    }
-
-    .preparer-signature.show { display: block; }
-
     .preparer-text {
       font-size: 11.5px;
       font-weight: 700;
@@ -1295,7 +1234,13 @@
       margin: 9px 0 10px;
     }
 
-    .copies-line .paper-line { flex: 1; min-height: 22px; }
+    .copies-line .paper-line {
+      flex: 1;
+      min-width: 0;
+      min-height: 22px;
+      font-size: 11.5px;
+      white-space: nowrap;
+    }
 
     .page-two-divider {
       height: 1px;
@@ -1341,68 +1286,6 @@
       align-items: flex-end;
       gap: 7px;
       padding: 0 4px 2px;
-    }
-
-    .modal {
-      position: fixed;
-      z-index: 100;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(24,18,26,.60);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .modal.show { display: flex; }
-
-    .modal-card {
-      width: min(620px, 100%);
-      border: 1px solid rgba(229,220,232,.9);
-      border-radius: 22px;
-      padding: 24px;
-      background: #fff;
-      box-shadow: 0 28px 90px rgba(0,0,0,.30);
-    }
-
-    .modal-card h2 {
-      margin: 0;
-      color: var(--purple-dark);
-      font-size: 23px;
-    }
-
-    .modal-card p {
-      margin: 7px 0 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .canvas-wrap {
-      overflow: hidden;
-      border: 1px solid #cfc3d2;
-      border-radius: 14px;
-      background:
-        linear-gradient(#fff, #fff) padding-box,
-        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(148,67,159,.05) 32px) border-box;
-      touch-action: none;
-    }
-
-    #signatureCanvas {
-      display: block;
-      width: 100%;
-      height: 210px;
-      cursor: crosshair;
-      touch-action: none;
-    }
-
-    .modal-actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 15px;
     }
 
     .toast {
@@ -1459,7 +1342,6 @@
     @media (max-width: 1120px) {
       .hero { grid-template-columns: 1fr; }
       .hero-badges { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .signature-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 800px) {
@@ -1474,7 +1356,7 @@
       .hero-badges { grid-template-columns: 1fr; min-width: 0; }
       .hero-badge { min-height: 42px; }
       .form-grid { grid-template-columns: 1fr; gap: 16px; }
-      .calculation-card, .signature-card, .action-bar { grid-column: 1; }
+      .calculation-card, .action-bar { grid-column: 1; }
       .action-bar {
         bottom: 8px;
         align-items: stretch;
@@ -1497,19 +1379,14 @@
       .card { border-radius: 19px; }
       .card-heading { min-height: 74px; padding: 18px; }
       .card-body { padding: 19px 18px 21px; }
-      .fields-grid, .signature-fields { grid-template-columns: 1fr; }
+      .fields-grid { grid-template-columns: 1fr; }
       .field.full, .section-divider, .subheading, .switch-row, .formula-note { grid-column: 1; }
       .fixed-value-grid, .calculation-groups { grid-template-columns: 1fr; }
       .fixed-value.full { grid-column: 1; }
       .calculation-other { align-items: flex-start; }
-      .signature-actions { grid-template-columns: 1fr; }
       .action-buttons button { padding-left: 10px; padding-right: 10px; }
       .preview-header { padding: 20px 18px; }
       .preview-title-row { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .modal { padding: 12px; }
-      .modal-card { padding: 19px; border-radius: 18px; }
-      #signatureCanvas { height: 175px; }
-      .modal-actions { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2090,6 +1967,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
               </div>
               <div class="field-error" id="disciplineError"></div>
             </div>
+            <div class="field full">
+              <label for="noticeType">Notice given</label>
+              <select id="noticeType" data-store="draft">
+                <option value="hiring" selected>At hiring</option>
+                <option value="change">Before a change in pay rate, allowances, or payday</option>
+              </select>
+            </div>
           </div>
         </div>
       </details>
@@ -2125,7 +2009,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
               <div class="input-prefix"><span>$</span><input id="overrideRate" data-store="draft" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
               <div class="field-error" id="overrideRateError"></div>
             </div>
-            <p class="formula-note">Override must be at least Minimum Wage and no more than Total Compensation. In-Service and the SOH add-on always use Minimum Wage.</p>
+            <p class="formula-note">Override may be from Minimum Wage through <strong data-bind="maximumOverride">$21.47</strong>. The maximum accounts for PTO before UHP is reduced to zero. In-Service and the SOH add-on always use Minimum Wage.</p>
           </div>
         </div>
       </details>
@@ -2151,11 +2035,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </section>
             <section class="calculation-group" aria-label="Spread of Hours rate calculation">
               <h3>Spread of Hours (SOH)</h3>
-              <div class="calculation-row"><span>Hourly wage rate</span><strong data-metric="soh">$21.29</strong></div>
+              <div class="calculation-row"><span>Regular base rate</span><strong data-metric="base">$19.65</strong></div>
+              <div class="calculation-row"><span>SOH add-on (<span data-bind="minimumWage">$19.65</span> ÷ <span data-bind="sohDivisorPlain">12</span>)</span><strong data-metric="sohAddOn">$1.64</strong></div>
+              <div class="calculation-row"><span>Effective SOH hourly rate</span><strong data-metric="soh">$21.29</strong></div>
               <div class="calculation-row"><span>Additional wage (PTO)</span><strong data-metric="sohPto">$0.71</strong></div>
               <div class="calculation-row"><span>Health &amp; Welfare (UHP)</span><strong data-metric="sohSupplemental">$0.19</strong></div>
-              <div class="calculation-row total"><span>Total compensation</span><strong data-metric="sohTotal">$22.19</strong></div>
-              <div class="calculation-row"><span>Overtime rate</span><strong data-metric="sohOt">$31.94</strong></div>
+              <div class="calculation-row total"><span>Actual total compensation</span><strong data-metric="sohTotal">$22.19</strong></div>
+              <div class="calculation-row"><span>Overtime rate (SOH premium separate)</span><strong data-metric="sohOt">$29.48</strong></div>
             </section>
           </div>
           <div class="calculation-other">
@@ -2165,46 +2051,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         </div>
       </details>
 
-      <details class="card signature-card">
-        <summary class="card-heading">
-          <span class="card-icon" aria-hidden="true">S</span>
-          <span class="card-title-wrap">
-            <span class="card-title">Preparer Signature</span>
-            <span class="card-kicker">Name, title, and signature are remembered locally</span>
-          </span>
-          <span class="summary-chevron" aria-hidden="true">⌃</span>
-        </summary>
-        <div class="card-body">
-          <div class="signature-layout">
-            <div class="signature-fields">
-              <div class="field">
-                <label for="preparerName">Name</label>
-                <input id="preparerName" data-store="signature" autocomplete="name">
-                <div class="field-error" id="preparerNameError"></div>
-              </div>
-              <div class="field">
-                <label for="preparerTitle">Title</label>
-                <input id="preparerTitle" data-store="signature" autocomplete="organization-title">
-                <div class="field-error" id="preparerTitleError"></div>
-              </div>
-              <p class="formula-note">The saved signature appears with the preparer information on both LS62 pages. Employee signature lines remain available for employee acknowledgement.</p>
-            </div>
-            <div class="signature-panel">
-              <img id="signaturePreview" class="signature-preview" alt="Saved preparer signature">
-              <div class="signature-status" id="signatureStatus">No handwritten signature saved.</div>
-              <div class="signature-actions">
-                <button class="secondary" id="signBtn" type="button">Sign</button>
-                <button class="danger-light" id="removeSignatureBtn" type="button">Remove</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
+      <input id="preparerName" type="hidden" value="Setora Ismoilova">
+      <input id="preparerTitle" type="hidden" value="Human Resources">
 
       <div class="action-bar">
         <div class="action-note">
           <span class="action-note-mark" aria-hidden="true">i</span>
-          <span>Company and annual rates are locked. Employee information and signature stay on this device.</span>
+          <span>Company and annual rates are locked. Employee information stays on this device.</span>
         </div>
         <div class="action-buttons">
           <button class="secondary" id="newEmployeeBtn" type="button">New Employee</button>
@@ -2272,8 +2125,8 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
                   <section class="ls-section">
                     <span class="ls-section-number">2.</span>
                     <h3 class="ls-section-title">Notice given:</h3>
-                    <div class="paper-check-row"><span class="paper-checkbox checked"></span><span>At hiring</span></div>
-                    <div class="paper-check-row"><span class="paper-checkbox"></span><span>Before a change in pay rate(s), allowances claimed or payday</span></div>
+                    <div class="paper-check-row"><span class="paper-checkbox" data-check="noticeAtHiring"></span><span>At hiring</span></div>
+                    <div class="paper-check-row"><span class="paper-checkbox" data-check="noticeBeforeChange"></span><span>Before a change in pay rate(s), allowances claimed or payday</span></div>
                   </section>
 
                   <p class="paper-note"><strong>Note:</strong> Live-in employees must be paid at least 13 hours for each 24 hour period, provided they receive 8 hours of sleep, with five hours of uninterrupted sleep and 3 hours off for meals. If an employee does not receive 5 hours of uninterrupted sleep, the employee must be paid for all 8 hours. If the employee does not receive meal periods free from duty, the employee must be paid for all 3 hours designated for meals.</p>
@@ -2341,7 +2194,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
                     </div>
                     <div class="ot-row">
                       <div class="ot-line"><strong>SOH OT: $</strong><span class="paper-line" data-bind="sohOtPlain"></span><span>per hour</span></div>
-                      <p class="ot-help">This is 1½ times the SOH base rate.</p>
+                      <p class="ot-help">This is 1½ times the Regular base rate. The SOH premium is paid separately.</p>
                     </div>
                   </section>
                 </div>
@@ -2371,7 +2224,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
                     <div class="ack-label">Date</div>
 
                     <div class="preparer-line">
-                      <img class="preparer-signature" data-signature alt="">
                       <span class="preparer-text" data-bind="preparerCombined"></span>
                     </div>
                     <div class="ack-label">Preparer’s Name and Title</div>
@@ -2459,7 +2311,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
               <div class="page-two-form-row">
                 <span>Preparer’s Name and Title:</span>
                 <span class="page-two-preparer">
-                  <img class="preparer-signature" data-signature alt="">
                   <span class="preparer-text" data-bind="preparerCombined"></span>
                 </span>
               </div>
@@ -2472,22 +2323,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     </section>
   </main>
 
-  <footer class="project-credit">A Davidowitz Project © <span id="projectYear"></span> · v1.1</footer>
-
-  <div class="modal" id="signatureModal" role="dialog" aria-modal="true" aria-labelledby="signatureModalTitle">
-    <div class="modal-card">
-      <h2 id="signatureModalTitle">Add Preparer Signature</h2>
-      <p>Sign with a mouse, finger, or stylus. Select Use Signature when finished.</p>
-      <div class="canvas-wrap">
-        <canvas id="signatureCanvas" aria-label="Signature drawing area"></canvas>
-      </div>
-      <div class="modal-actions">
-        <button class="danger-light" id="clearCanvasBtn" type="button">Clear</button>
-        <button class="secondary" id="cancelSignatureBtn" type="button">Cancel</button>
-        <button class="primary" id="saveSignatureBtn" type="button">Use Signature</button>
-      </div>
-    </div>
-  </div>
+  <footer class="project-credit">A Davidowitz Project © <span id="projectYear"></span> · v1.2</footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -2495,8 +2331,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     (function () {
       "use strict";
 
-      var VERSION = "1.1";
-      var SIGNATURE_KEY = "benevolentLS62.signature.v1";
+      var VERSION = "1.2";
       var DRAFT_KEY = "benevolentLS62.draft.v1";
 
       var DEFAULT_SETTINGS = {
@@ -2514,13 +2349,9 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         sohDivisor: "12",
         benefitProviderName: "UHP Administrators",
         benefitProviderAddress: "1662 61 St, Brklyn, NY 11204",
-        planInformation: "Policy #001248"
-      };
-
-      var DEFAULT_SIGNATURE = {
-        name: "Setora Ismoilova",
-        title: "Human Resources",
-        signature: ""
+        planInformation: "Policy #001248",
+        preparerName: "Setora Ismoilova",
+        preparerTitle: "Human Resources"
       };
 
       var DEFAULT_DRAFT = {
@@ -2528,18 +2359,16 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         hireDate: "",
         language: "English",
         discipline: "HHA",
+        noticeType: "hiring",
         overrideEnabled: false,
         overrideRate: ""
       };
 
-      var signatureData = "";
       var currentCalculation = null;
       var touched = new Set();
       var showAllErrors = false;
       var saveTimer = 0;
       var toastTimer = 0;
-      var isDrawing = false;
-      var hasCanvasInk = false;
 
       function byId(id) { return document.getElementById(id); }
       function textValue(id) { return byId(id).value.trim(); }
@@ -2563,15 +2392,11 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       function loadStoredState() {
         Object.keys(DEFAULT_SETTINGS).forEach(function (key) { setControlValue(key, DEFAULT_SETTINGS[key]); });
 
-        var profile = safeParse(SIGNATURE_KEY, DEFAULT_SIGNATURE);
-        setControlValue("preparerName", profile.name);
-        setControlValue("preparerTitle", profile.title);
-        signatureData = typeof profile.signature === "string" ? profile.signature : "";
-
         var draft = safeParse(DRAFT_KEY, DEFAULT_DRAFT);
         setControlValue("employeeName", draft.employeeName);
         setControlValue("hireDate", draft.hireDate);
         setControlValue("language", draft.language);
+        setControlValue("noticeType", draft.noticeType === "change" ? "change" : "hiring");
         setControlValue("overrideEnabled", draft.overrideEnabled);
         setControlValue("overrideRate", draft.overrideRate);
         var discipline = draft.discipline === "PCA" ? "PCA" : "HHA";
@@ -2585,6 +2410,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           hireDate: byId("hireDate").value,
           language: byId("language").value,
           discipline: getDiscipline(),
+          noticeType: byId("noticeType").value,
           overrideEnabled: byId("overrideEnabled").checked,
           overrideRate: byId("overrideRate").value
         };
@@ -2592,17 +2418,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
       function saveDraft() {
         try { localStorage.setItem(DRAFT_KEY, JSON.stringify(collectDraft())); } catch (error) {}
-        flashSaved();
-      }
-
-      function saveSignatureProfile() {
-        try {
-          localStorage.setItem(SIGNATURE_KEY, JSON.stringify({
-            name: byId("preparerName").value,
-            title: byId("preparerTitle").value,
-            signature: signatureData
-          }));
-        } catch (error) {}
         flashSaved();
       }
 
@@ -2635,6 +2450,18 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
       function roundCurrency(value) {
         return Math.round((value + 0.000000001) * 100) / 100;
+      }
+
+      function maximumOverrideRate(total, ptoDivisor, minimumWage) {
+        if (!Number.isFinite(total) || !Number.isFinite(ptoDivisor) || !Number.isFinite(minimumWage) || ptoDivisor <= 0) return null;
+        var firstCent = Math.ceil(roundCurrency(minimumWage) * 100);
+        var lastCent = Math.floor(roundCurrency(total) * 100);
+        for (var cents = lastCent; cents >= firstCent; cents -= 1) {
+          var rate = cents / 100;
+          var pto = roundCurrency(rate / ptoDivisor);
+          if (roundCurrency(rate + pto) <= roundCurrency(total)) return rate;
+        }
+        return null;
       }
 
       function getDiscipline() {
@@ -2673,14 +2500,21 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         if (minimumWage < 0 || wageParity < 0 || ptoDivisor <= 0 || sohDivisor <= 0) return null;
 
         var total = roundCurrency(minimumWage + wageParity);
-        var base = roundCurrency(overrideEnabled ? overrideRate : minimumWage);
-        if (base === null || base < minimumWage || base > total) return null;
+        var requestedBase = overrideEnabled ? overrideRate : minimumWage;
+        if (requestedBase === null) return null;
+        var base = roundCurrency(requestedBase);
+        var maximumOverride = maximumOverrideRate(total, ptoDivisor, minimumWage);
+        if (base < minimumWage || maximumOverride === null || base > maximumOverride) return null;
 
         var pto = roundCurrency(base / ptoDivisor);
         var supplemental = roundCurrency(Math.max(0, total - base - pto));
+        var regularTotal = roundCurrency(base + pto + supplemental);
+        var sohAddOn = roundCurrency(minimumWage / sohDivisor);
         var soh = roundCurrency(base + (minimumWage / sohDivisor));
         var sohPto = roundCurrency(soh / ptoDivisor);
         var sohSupplemental = roundCurrency(Math.max(0, total - soh - sohPto));
+        var sohTotal = roundCurrency(soh + sohPto + sohSupplemental);
+        var overtime = roundCurrency(base * 1.5);
 
         return {
           minimumWage: minimumWage,
@@ -2689,13 +2523,15 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           base: base,
           pto: pto,
           supplemental: supplemental,
-          regularTotal: total,
+          regularTotal: regularTotal,
+          maximumOverride: maximumOverride,
+          sohAddOn: sohAddOn,
           soh: soh,
           sohPto: sohPto,
           sohSupplemental: sohSupplemental,
-          sohTotal: total,
-          ot: roundCurrency(base * 1.5),
-          sohOt: roundCurrency(soh * 1.5),
+          sohTotal: sohTotal,
+          ot: overtime,
+          sohOt: overtime,
           inService: minimumWage,
           ptoDivisor: ptoDivisor,
           sohDivisor: sohDivisor
@@ -2748,12 +2584,17 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
         if (byId("overrideEnabled").checked) {
           var overrideRate = numericValue("overrideRate");
-          var total = minimumWage !== null && wageParity !== null ? minimumWage + wageParity : null;
+          var total = minimumWage !== null && wageParity !== null ? roundCurrency(minimumWage + wageParity) : null;
+          var maximumOverride = total !== null && ptoDivisor !== null ? maximumOverrideRate(total, ptoDivisor, minimumWage) : null;
           if (overrideRate === null) errors.overrideRate = "Enter the override rate.";
           else if (overrideRate < 0) errors.overrideRate = "Override rate cannot be negative.";
           else if (!hasAtMostTwoDecimals("overrideRate")) errors.overrideRate = "Use no more than 2 decimal places.";
           else if (minimumWage !== null && overrideRate < minimumWage) errors.overrideRate = "Override rate must be at least " + formatMoney(minimumWage) + ".";
-          else if (total !== null && overrideRate > total) errors.overrideRate = "Override rate cannot exceed " + formatMoney(total) + ".";
+          else if (maximumOverride !== null && roundCurrency(overrideRate) > maximumOverride) {
+            var attemptedPto = roundCurrency(overrideRate / ptoDivisor);
+            var beforeUhp = roundCurrency(overrideRate + attemptedPto);
+            errors.overrideRate = "Override rate cannot exceed " + formatMoney(maximumOverride) + ". At " + formatMoney(overrideRate) + ", PTO is " + formatMoney(attemptedPto) + ", bringing compensation to " + formatMoney(beforeUhp) + " before UHP.";
+          }
         }
 
         [
@@ -2788,20 +2629,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         });
       }
 
-      function updateSignatureUI() {
-        var preview = byId("signaturePreview");
-        preview.classList.toggle("show", Boolean(signatureData));
-        if (signatureData) preview.src = signatureData;
-        else preview.removeAttribute("src");
-        byId("signatureStatus").textContent = signatureData ? "Handwritten signature saved." : "No handwritten signature saved.";
-
-        document.querySelectorAll("[data-signature]").forEach(function (image) {
-          image.classList.toggle("show", Boolean(signatureData));
-          if (signatureData) image.src = signatureData;
-          else image.removeAttribute("src");
-        });
-      }
-
       function updatePreview(calculation) {
         var placeholder = "--";
         var language = textValue("language") || "English";
@@ -2832,6 +2659,8 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         setCheck("biweekly", frequency === "Bi-weekly");
         setCheck("otherPay", frequency === "Other");
         setBoundText("otherPayText", frequency === "Other" ? "Other" : "");
+        setCheck("noticeAtHiring", byId("noticeType").value !== "change");
+        setCheck("noticeBeforeChange", byId("noticeType").value === "change");
         setCheck("languageEnglish", english);
         setCheck("languageOther", false);
         setCheck("page2Yes", english);
@@ -2839,7 +2668,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         translationNotice.hidden = english;
         translationNotice.textContent = english ? "" : "This app creates the English LS62. Also provide the official NYSDOL " + language + " LS62 to the employee.";
 
-        var metricNames = ["base", "pto", "supplemental", "regularTotal", "soh", "sohPto", "sohSupplemental", "sohTotal", "ot", "sohOt", "inService", "total"];
+        var metricNames = ["base", "pto", "supplemental", "regularTotal", "sohAddOn", "soh", "sohPto", "sohSupplemental", "sohTotal", "ot", "sohOt", "inService", "total"];
         metricNames.forEach(function (name) {
           var value = calculation ? calculation[name] : NaN;
           document.querySelectorAll('[data-metric="' + name + '"]').forEach(function (element) { element.textContent = formatMoney(value); });
@@ -2848,14 +2677,20 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         });
 
         setBoundText("ptoDivisorPlain", calculation ? plainMoney(calculation.ptoDivisor).replace(/\.00$/, "") : placeholder);
-        updateSignatureUI();
+        setBoundText("sohDivisorPlain", calculation ? plainMoney(calculation.sohDivisor).replace(/\.00$/, "") : plainMoney(numericValue("sohDivisor")).replace(/\.00$/, ""));
+        setBoundText("minimumWage", formatMoney(numericValue("minimumWage")));
       }
 
       function updateCalculatedInputs(calculation) {
         var minimumWage = numericValue("minimumWage");
         var wageParity = numericValue("wageParityPortion");
+        var ptoDivisor = numericValue("ptoDivisor");
+        var total = minimumWage === null || wageParity === null ? null : roundCurrency(minimumWage + wageParity);
+        var maximumOverride = total === null || ptoDivisor === null ? null : maximumOverrideRate(total, ptoDivisor, minimumWage);
         byId("standardRate").value = minimumWage === null ? "" : minimumWage.toFixed(2);
-        byId("totalCompensation").value = minimumWage === null || wageParity === null ? "" : (minimumWage + wageParity).toFixed(2);
+        byId("totalCompensation").value = total === null ? "" : total.toFixed(2);
+        byId("overrideRate").max = maximumOverride === null ? "" : maximumOverride.toFixed(2);
+        setBoundText("maximumOverride", formatMoney(maximumOverride));
         byId("overrideField").hidden = !byId("overrideEnabled").checked;
         currentCalculation = calculation;
       }
@@ -2902,70 +2737,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         document.body.classList.remove("preview-full-size");
         byId("previewSizeBtn").textContent = "Full Size";
         fitPreview();
-      }
-
-      var canvas = byId("signatureCanvas");
-      var context = canvas.getContext("2d");
-
-      function resizeCanvas() {
-        var rect = canvas.getBoundingClientRect();
-        var ratio = Math.max(window.devicePixelRatio || 1, 1);
-        canvas.width = Math.round(rect.width * ratio);
-        canvas.height = Math.round(rect.height * ratio);
-        context.setTransform(ratio, 0, 0, ratio, 0, 0);
-        context.lineCap = "round";
-        context.lineJoin = "round";
-        context.lineWidth = 2.4;
-        context.strokeStyle = "#171319";
-        context.clearRect(0, 0, rect.width, rect.height);
-        hasCanvasInk = false;
-      }
-
-      function canvasPoint(event) {
-        var rect = canvas.getBoundingClientRect();
-        return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-      }
-
-      function startDrawing(event) {
-        event.preventDefault();
-        isDrawing = true;
-        hasCanvasInk = true;
-        var point = canvasPoint(event);
-        context.beginPath();
-        context.moveTo(point.x, point.y);
-        if (canvas.setPointerCapture) canvas.setPointerCapture(event.pointerId);
-      }
-
-      function draw(event) {
-        if (!isDrawing) return;
-        event.preventDefault();
-        var point = canvasPoint(event);
-        context.lineTo(point.x, point.y);
-        context.stroke();
-      }
-
-      function stopDrawing(event) {
-        if (!isDrawing) return;
-        isDrawing = false;
-        context.closePath();
-        if (canvas.releasePointerCapture && event && event.pointerId !== undefined) {
-          try { canvas.releasePointerCapture(event.pointerId); } catch (error) {}
-        }
-      }
-
-      function openSignatureModal() {
-        byId("signatureModal").classList.add("show");
-        document.body.style.overflow = "hidden";
-        requestAnimationFrame(function () {
-          resizeCanvas();
-          byId("clearCanvasBtn").focus();
-        });
-      }
-
-      function closeSignatureModal() {
-        byId("signatureModal").classList.remove("show");
-        document.body.style.overflow = "";
-        byId("signBtn").focus();
       }
 
       function safeFilePart(value) {
@@ -3060,6 +2831,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         byId("employeeName").value = "";
         byId("hireDate").value = "";
         byId("language").value = "English";
+        byId("noticeType").value = "hiring";
         var hha = document.querySelector('input[name="discipline"][value="HHA"]');
         if (hha) hha.checked = true;
         byId("overrideEnabled").checked = false;
@@ -3087,60 +2859,12 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         });
       });
 
-      document.querySelectorAll('[data-store="signature"]').forEach(function (element) {
-        element.addEventListener("input", function () {
-          touched.add(element.id);
-          saveSignatureProfile();
-          updateAll();
-        });
-        element.addEventListener("change", function () {
-          touched.add(element.id);
-          saveSignatureProfile();
-          updateAll();
-        });
-      });
-
       ["overrideRate"].forEach(function (id) {
         byId(id).addEventListener("blur", function () {
           normalizeMoneyField(byId(id));
           saveDraft();
           updateAll();
         });
-      });
-
-      canvas.addEventListener("pointerdown", startDrawing);
-      canvas.addEventListener("pointermove", draw);
-      canvas.addEventListener("pointerup", stopDrawing);
-      canvas.addEventListener("pointercancel", stopDrawing);
-      canvas.addEventListener("pointerleave", stopDrawing);
-
-      byId("signBtn").addEventListener("click", openSignatureModal);
-      byId("clearCanvasBtn").addEventListener("click", resizeCanvas);
-      byId("cancelSignatureBtn").addEventListener("click", closeSignatureModal);
-      byId("saveSignatureBtn").addEventListener("click", function () {
-        if (!hasCanvasInk) {
-          showToast("Please sign in the box first.");
-          return;
-        }
-        signatureData = canvas.toDataURL("image/png");
-        saveSignatureProfile();
-        closeSignatureModal();
-        updateAll();
-      });
-
-      byId("removeSignatureBtn").addEventListener("click", function () {
-        signatureData = "";
-        saveSignatureProfile();
-        updateAll();
-        showToast("Saved signature removed.");
-      });
-
-      byId("signatureModal").addEventListener("click", function (event) {
-        if (event.target === byId("signatureModal")) closeSignatureModal();
-      });
-
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && byId("signatureModal").classList.contains("show")) closeSignatureModal();
       });
 
       byId("previewSizeBtn").addEventListener("click", function () {
