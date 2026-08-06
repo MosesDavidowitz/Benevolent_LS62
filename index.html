@@ -398,6 +398,20 @@
       line-height: 1.35;
     }
 
+    .translation-note {
+      margin: 8px 0 0;
+      border-left: 3px solid #d4a64d;
+      border-radius: 0 8px 8px 0;
+      padding: 8px 10px;
+      color: #6c5527;
+      background: #fff9ec;
+      font-size: 10.5px;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .translation-note[hidden] { display: none; }
+
     .input-prefix { position: relative; }
     .input-prefix > span {
       position: absolute;
@@ -556,56 +570,132 @@
       line-height: 1.5;
     }
 
+    .fixed-value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .fixed-value {
+      min-width: 0;
+      border: 1px solid #e9e2eb;
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #faf8fb;
+    }
+
+    .fixed-value.full { grid-column: 1 / -1; }
+
+    .fixed-label {
+      display: block;
+      margin-bottom: 4px;
+      color: #7a717d;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .fixed-text {
+      display: block;
+      color: #3f3942;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
     .calculation-card {
       grid-column: 1 / -1;
       overflow: hidden;
     }
 
-    .calculation-card .card-heading {
-      border-bottom: 1px solid #efe8f1;
-    }
-
-    .metric-grid {
+    .calculation-groups {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      padding: 22px 24px 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .metric {
+    .calculation-group {
       min-width: 0;
-      border: 1px solid #e9e0eb;
-      border-radius: 15px;
-      padding: 15px;
-      background: linear-gradient(145deg, #fff, #fbf8fc);
+      overflow: hidden;
+      border: 1px solid #e5dfe7;
+      border-radius: 14px;
+      background: #fff;
     }
 
-    .metric.emphasis {
-      border-color: #d9bddf;
-      background: linear-gradient(145deg, #fbf5fc, #f3e8f6);
+    .calculation-group h3 {
+      margin: 0;
+      border-bottom: 1px solid #e5dfe7;
+      padding: 12px 14px;
+      color: #3f3942;
+      background: #f7f5f8;
+      font-size: 13px;
     }
 
-    .metric-label {
-      display: block;
-      min-height: 28px;
-      color: #746b78;
-      font-size: 11px;
-      font-weight: 800;
-      line-height: 1.25;
-      text-transform: uppercase;
-      letter-spacing: .04em;
+    .calculation-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 42px;
+      border-bottom: 1px solid #eee9ef;
+      padding: 9px 14px;
     }
 
-    .metric-value {
-      display: block;
-      margin-top: 8px;
+    .calculation-row:last-child { border-bottom: 0; }
+
+    .calculation-row span:first-child {
+      color: #665f69;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .calculation-row strong {
+      flex: 0 0 auto;
       color: #332d36;
-      font-size: 23px;
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: -.025em;
     }
 
-    .metric.emphasis .metric-value { color: var(--purple-dark); }
+    .calculation-row.total {
+      background: #f5f8f6;
+    }
+
+    .calculation-row.total span:first-child,
+    .calculation-row.total strong { color: #315b43; font-weight: 800; }
+
+    .calculation-other {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 16px;
+      border: 1px solid #e5dfe7;
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: #faf9fb;
+    }
+
+    .calculation-other-copy strong {
+      display: block;
+      color: #3f3942;
+      font-size: 13px;
+    }
+
+    .calculation-other-copy span {
+      display: block;
+      margin-top: 3px;
+      color: #7a717d;
+      font-size: 11px;
+    }
+
+    .calculation-other-rate {
+      color: #332d36;
+      font-size: 18px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
     .signature-card { grid-column: 1 / -1; }
 
@@ -1184,10 +1274,11 @@
 
     .benefit-table .benefit-row { height: 60px; }
     .benefit-table .center { text-align: center; }
-    .benefit-table .amount { font-size: 15px; white-space: nowrap; }
+    .benefit-table .amount { font-size: 12.5px; white-space: nowrap; }
+    .benefit-table sup { font-size: 8px; line-height: 0; }
     .benefit-table col:nth-child(1) { width: 10.5%; }
-    .benefit-table col:nth-child(2) { width: 8.5%; }
-    .benefit-table col:nth-child(3) { width: 22%; }
+    .benefit-table col:nth-child(2) { width: 11.5%; }
+    .benefit-table col:nth-child(3) { width: 19%; }
     .benefit-table col:nth-child(4) { width: 24%; }
     .benefit-table col:nth-child(5) { width: 35%; }
 
@@ -1368,7 +1459,6 @@
     @media (max-width: 1120px) {
       .hero { grid-template-columns: 1fr; }
       .hero-badges { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .metric-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .signature-layout { grid-template-columns: 1fr; }
     }
 
@@ -1385,7 +1475,6 @@
       .hero-badge { min-height: 42px; }
       .form-grid { grid-template-columns: 1fr; gap: 16px; }
       .calculation-card, .signature-card, .action-bar { grid-column: 1; }
-      .metric-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .action-bar {
         bottom: 8px;
         align-items: stretch;
@@ -1410,10 +1499,9 @@
       .card-body { padding: 19px 18px 21px; }
       .fields-grid, .signature-fields { grid-template-columns: 1fr; }
       .field.full, .section-divider, .subheading, .switch-row, .formula-note { grid-column: 1; }
-      .metric-grid { gap: 9px; padding: 17px; }
-      .metric { padding: 13px 11px; }
-      .metric-value { font-size: 19px; }
-      .metric-label { font-size: 9.5px; }
+      .fixed-value-grid, .calculation-groups { grid-template-columns: 1fr; }
+      .fixed-value.full { grid-column: 1; }
+      .calculation-other { align-items: flex-start; }
       .signature-actions { grid-template-columns: 1fr; }
       .action-buttons button { padding-left: 10px; padding-right: 10px; }
       .preview-header { padding: 20px 18px; }
@@ -1883,7 +1971,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       <div>
         <p class="eyebrow">Human Resources</p>
         <h1 id="pageTitle">LS62 Wage Notice Generator</h1>
-        <p class="hero-copy">Create a complete New York LS 62 (12/25) wage notice with live calculations, a two-page preview, saved settings, and one-tap PDF download.</p>
+        <p class="hero-copy">Create a complete New York LS 62 (12/25) wage notice with locked company rates, live calculations, a two-page preview, and one-tap PDF download.</p>
       </div>
       <div class="hero-badges" aria-label="Application features">
         <div class="hero-badge"><span class="badge-icon">✓</span><span>Works fully offline</span></div>
@@ -1898,141 +1986,73 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     </div>
 
     <section class="form-grid" aria-label="LS62 setup">
-      <details class="card" open>
+      <details class="card">
         <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">B</span>
           <span class="card-title-wrap">
             <span class="card-title">Company Settings</span>
-            <span class="card-kicker">Saved automatically on this device</span>
+            <span class="card-kicker">Fixed company and UHP plan information</span>
           </span>
           <span class="summary-chevron" aria-hidden="true">⌃</span>
         </summary>
         <div class="card-body">
-          <div class="fields-grid">
-            <div class="field full">
-              <label for="companyName">Company</label>
-              <input id="companyName" data-store="settings" autocomplete="organization">
-              <div class="field-error" id="companyNameError"></div>
-            </div>
-            <div class="field">
-              <label for="companyAddress1">Address line 1</label>
-              <input id="companyAddress1" data-store="settings" autocomplete="street-address">
-              <div class="field-error" id="companyAddress1Error"></div>
-            </div>
-            <div class="field">
-              <label for="companyAddress2">City, state and ZIP</label>
-              <input id="companyAddress2" data-store="settings">
-              <div class="field-error" id="companyAddress2Error"></div>
-            </div>
-            <div class="field">
-              <label for="companyPhone">Phone</label>
-              <input id="companyPhone" data-store="settings" inputmode="tel" autocomplete="tel">
-              <div class="field-error" id="companyPhoneError"></div>
-            </div>
-            <div class="field">
-              <label for="companyDba">DBA <span class="optional">(optional)</span></label>
-              <input id="companyDba" data-store="settings">
-              <div class="field-error" id="companyDbaError"></div>
-            </div>
-            <div class="field">
-              <label for="companyFein">FEIN <span class="optional">(optional)</span></label>
-              <input id="companyFein" data-store="settings" inputmode="numeric" placeholder="XX-XXXXXXX">
-              <div class="field-error" id="companyFeinError"></div>
-            </div>
-            <div class="field">
-              <label for="regularPayday">Regular payday</label>
-              <input id="regularPayday" data-store="settings">
-              <div class="field-error" id="regularPaydayError"></div>
-            </div>
-            <div class="field">
-              <label for="payFrequency">Pay frequency</label>
-              <select id="payFrequency" data-store="settings">
-                <option>Weekly</option>
-                <option>Bi-weekly</option>
-                <option>Other</option>
-              </select>
-              <div class="field-error" id="payFrequencyError"></div>
-            </div>
-            <div class="section-divider"></div>
-            <div class="subheading">Benefit Provider</div>
-            <div class="field">
-              <label for="benefitProviderName">Provider name</label>
-              <input id="benefitProviderName" data-store="settings">
-              <div class="field-error" id="benefitProviderNameError"></div>
-            </div>
-            <div class="field">
-              <label for="mecPlanName">Plan information</label>
-              <input id="mecPlanName" data-store="settings">
-              <div class="field-error" id="mecPlanNameError"></div>
-            </div>
-            <div class="field full">
-              <label for="benefitProviderAddress">Provider address</label>
-              <input id="benefitProviderAddress" data-store="settings">
-              <div class="field-error" id="benefitProviderAddressError"></div>
-            </div>
+          <div class="fixed-value-grid">
+            <div class="fixed-value full"><span class="fixed-label">Company</span><span class="fixed-text">Benevolent Home Care LLC</span></div>
+            <div class="fixed-value full"><span class="fixed-label">Address</span><span class="fixed-text">1021 McDonald Ave, Brooklyn, NY 11230</span></div>
+            <div class="fixed-value"><span class="fixed-label">Phone</span><span class="fixed-text">718-345-1000</span></div>
+            <div class="fixed-value"><span class="fixed-label">Pay Schedule</span><span class="fixed-text">Weekly · Friday</span></div>
+            <div class="fixed-value"><span class="fixed-label">Benefit Provider</span><span class="fixed-text">UHP Administrators</span></div>
+            <div class="fixed-value"><span class="fixed-label">Plan Information</span><span class="fixed-text">Policy #001248</span></div>
+            <div class="fixed-value full"><span class="fixed-label">Provider Address</span><span class="fixed-text">1662 61 St, Brklyn, NY 11204</span></div>
           </div>
+          <input id="companyName" type="hidden" value="Benevolent Home Care LLC">
+          <input id="companyAddress1" type="hidden" value="1021 McDonald Ave">
+          <input id="companyAddress2" type="hidden" value="Brooklyn, NY 11230">
+          <input id="companyPhone" type="hidden" value="718-345-1000">
+          <input id="companyDba" type="hidden" value="">
+          <input id="companyFein" type="hidden" value="">
+          <input id="regularPayday" type="hidden" value="Friday">
+          <input id="payFrequency" type="hidden" value="Weekly">
+          <input id="benefitProviderName" type="hidden" value="UHP Administrators">
+          <input id="benefitProviderAddress" type="hidden" value="1662 61 St, Brklyn, NY 11204">
+          <input id="planInformation" type="hidden" value="Policy #001248">
         </div>
       </details>
 
-      <details class="card" open>
+      <details class="card">
         <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">$</span>
           <span class="card-title-wrap">
             <span class="card-title">Annual Settings</span>
-            <span class="card-kicker">All rates calculate from these values</span>
+            <span class="card-kicker">Fixed 2026 rates used by every calculation</span>
           </span>
           <span class="summary-chevron" aria-hidden="true">⌃</span>
         </summary>
         <div class="card-body">
-          <div class="fields-grid">
-            <div class="field">
-              <label for="minimumWage">Minimum wage</label>
-              <div class="input-prefix"><span>$</span><input id="minimumWage" data-store="settings" type="number" min="0" step="0.01" inputmode="decimal"></div>
-              <div class="field-error" id="minimumWageError"></div>
-            </div>
-            <div class="field">
-              <label for="wageParityPortion">Wage parity portion</label>
-              <div class="input-prefix"><span>$</span><input id="wageParityPortion" data-store="settings" type="number" min="0" step="0.01" inputmode="decimal"></div>
-              <div class="field-error" id="wageParityPortionError"></div>
-            </div>
-            <div class="field full">
-              <label for="totalCompensation">Total compensation</label>
-              <div class="input-prefix"><span>$</span><input id="totalCompensation" readonly aria-describedby="totalCompensationHelp"></div>
-              <div class="field-error" id="totalCompensationError"></div>
-            </div>
-            <p class="formula-note" id="totalCompensationHelp">Total Compensation = Minimum Wage + Wage Parity Portion</p>
-            <div class="field">
-              <label for="ptoDivisor">PTO divisor</label>
-              <input id="ptoDivisor" data-store="settings" type="number" min="0.01" step="0.01" inputmode="decimal">
-              <div class="field-error" id="ptoDivisorError"></div>
-            </div>
-            <div class="field">
-              <label for="sohDivisor">SOH divisor</label>
-              <input id="sohDivisor" data-store="settings" type="number" min="0.01" step="0.01" inputmode="decimal">
-              <div class="field-error" id="sohDivisorError"></div>
-            </div>
-            <div class="switch-row">
-              <div class="switch-copy">
-                <strong>Enable Travel</strong>
-                <small>Travel will use Minimum Wage, matching In-Service.</small>
-              </div>
-              <label class="switch" aria-label="Enable Travel">
-                <input id="travelEnabled" data-store="settings" type="checkbox">
-                <span class="switch-track"></span>
-              </label>
-            </div>
+          <div class="fixed-value-grid">
+            <div class="fixed-value"><span class="fixed-label">Minimum Wage</span><span class="fixed-text">$19.65</span></div>
+            <div class="fixed-value"><span class="fixed-label">Wage Parity Portion</span><span class="fixed-text">$2.54</span></div>
+            <div class="fixed-value full"><span class="fixed-label">Total Compensation</span><span class="fixed-text">$22.19</span></div>
+            <div class="fixed-value"><span class="fixed-label">PTO Divisor</span><span class="fixed-text">30</span></div>
+            <div class="fixed-value"><span class="fixed-label">SOH Divisor</span><span class="fixed-text">12</span></div>
           </div>
+          <input id="minimumWage" type="hidden" value="19.65">
+          <input id="wageParityPortion" type="hidden" value="2.54">
+          <input id="totalCompensation" type="hidden" value="22.19">
+          <input id="ptoDivisor" type="hidden" value="30">
+          <input id="sohDivisor" type="hidden" value="12">
         </div>
       </details>
 
-      <article class="card" id="employeeCard">
-        <div class="card-heading">
+      <details class="card" id="employeeCard">
+        <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">E</span>
           <span class="card-title-wrap">
-            <h2 class="card-title">Employee</h2>
-            <p class="card-kicker">Information for this wage notice</p>
+            <span class="card-title">Employee</span>
+            <span class="card-kicker">Information for this wage notice</span>
           </span>
-        </div>
+          <span class="summary-chevron" aria-hidden="true">⌃</span>
+        </summary>
         <div class="card-body">
           <div class="fields-grid">
             <div class="field full">
@@ -2047,18 +2067,20 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </div>
             <div class="field">
               <label for="language">Primary language</label>
-              <input id="language" data-store="draft" list="languageOptions" placeholder="English">
-              <datalist id="languageOptions">
-                <option value="English">
-                <option value="Spanish">
-                <option value="Russian">
-                <option value="Bengali">
-                <option value="Chinese">
-                <option value="Haitian Creole">
-                <option value="Polish">
-                <option value="Yiddish">
-              </datalist>
+              <select id="language" data-store="draft">
+                <option value="English" selected>English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Russian">Russian</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+                <option value="Haitian Creole">Haitian Creole</option>
+                <option value="Polish">Polish</option>
+                <option value="Yiddish">Yiddish</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Arabic">Arabic</option>
+              </select>
               <div class="field-error" id="languageError"></div>
+              <p class="translation-note" id="translationNotice" hidden></p>
             </div>
             <div class="field full">
               <span class="field-label">Discipline</span>
@@ -2070,16 +2092,17 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </div>
           </div>
         </div>
-      </article>
+      </details>
 
-      <article class="card">
-        <div class="card-heading">
+      <details class="card">
+        <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">R</span>
           <span class="card-title-wrap">
-            <h2 class="card-title">Pay Rate</h2>
-            <p class="card-kicker">Standard rate follows Minimum Wage</p>
+            <span class="card-title">Pay Rate</span>
+            <span class="card-kicker">Standard rate follows Minimum Wage</span>
           </span>
-        </div>
+          <span class="summary-chevron" aria-hidden="true">⌃</span>
+        </summary>
         <div class="card-body">
           <div class="fields-grid">
             <div class="field full">
@@ -2102,42 +2125,55 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
               <div class="input-prefix"><span>$</span><input id="overrideRate" data-store="draft" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
               <div class="field-error" id="overrideRateError"></div>
             </div>
-            <p class="formula-note">Override must be at least Minimum Wage and no more than Total Compensation. In-Service, Travel, and the SOH add-on always use Minimum Wage.</p>
+            <p class="formula-note">Override must be at least Minimum Wage and no more than Total Compensation. In-Service and the SOH add-on always use Minimum Wage.</p>
           </div>
         </div>
-      </article>
+      </details>
 
-      <article class="card calculation-card" aria-labelledby="calculationTitle">
-        <div class="card-heading">
+      <details class="card calculation-card">
+        <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">=</span>
           <span class="card-title-wrap">
-            <h2 class="card-title" id="calculationTitle">Calculation Summary</h2>
-            <p class="card-kicker">Read-only values update instantly</p>
+            <span class="card-title">Calculation Summary</span>
+            <span class="card-kicker">Regular, SOH, overtime, and in-service rates</span>
           </span>
+          <span class="summary-chevron" aria-hidden="true">⌃</span>
+        </summary>
+        <div class="card-body">
+          <div class="calculation-groups">
+            <section class="calculation-group" aria-label="Regular rate calculation">
+              <h3>Regular</h3>
+              <div class="calculation-row"><span>Hourly base rate</span><strong data-metric="base">$19.65</strong></div>
+              <div class="calculation-row"><span>Additional wage (PTO)</span><strong data-metric="pto">$0.66</strong></div>
+              <div class="calculation-row"><span>Health &amp; Welfare (UHP)</span><strong data-metric="supplemental">$1.88</strong></div>
+              <div class="calculation-row total"><span>Total compensation</span><strong data-metric="regularTotal">$22.19</strong></div>
+              <div class="calculation-row"><span>Overtime rate</span><strong data-metric="ot">$29.48</strong></div>
+            </section>
+            <section class="calculation-group" aria-label="Spread of Hours rate calculation">
+              <h3>Spread of Hours (SOH)</h3>
+              <div class="calculation-row"><span>Hourly wage rate</span><strong data-metric="soh">$21.29</strong></div>
+              <div class="calculation-row"><span>Additional wage (PTO)</span><strong data-metric="sohPto">$0.71</strong></div>
+              <div class="calculation-row"><span>Health &amp; Welfare (UHP)</span><strong data-metric="sohSupplemental">$0.19</strong></div>
+              <div class="calculation-row total"><span>Total compensation</span><strong data-metric="sohTotal">$22.19</strong></div>
+              <div class="calculation-row"><span>Overtime rate</span><strong data-metric="sohOt">$31.94</strong></div>
+            </section>
+          </div>
+          <div class="calculation-other">
+            <div class="calculation-other-copy"><strong>In-Service</strong><span>Always paid at the fixed Minimum Wage</span></div>
+            <div class="calculation-other-rate" data-metric="inService">$19.65</div>
+          </div>
         </div>
-        <div class="metric-grid">
-          <div class="metric emphasis"><span class="metric-label">Base</span><span class="metric-value" data-metric="base">$19.65</span></div>
-          <div class="metric"><span class="metric-label">PTO</span><span class="metric-value" data-metric="pto">$0.66</span></div>
-          <div class="metric"><span class="metric-label">Supplemental</span><span class="metric-value" data-metric="supplemental">$1.89</span></div>
-          <div class="metric emphasis"><span class="metric-label">SOH</span><span class="metric-value" data-metric="soh">$21.29</span></div>
-          <div class="metric"><span class="metric-label">SOH PTO</span><span class="metric-value" data-metric="sohPto">$0.71</span></div>
-          <div class="metric"><span class="metric-label">SOH Supplemental</span><span class="metric-value" data-metric="sohSupplemental">$0.19</span></div>
-          <div class="metric emphasis"><span class="metric-label">OT</span><span class="metric-value" data-metric="ot">$29.48</span></div>
-          <div class="metric"><span class="metric-label">SOH OT</span><span class="metric-value" data-metric="sohOt">$31.93</span></div>
-          <div class="metric"><span class="metric-label">In-Service</span><span class="metric-value" data-metric="inService">$19.65</span></div>
-          <div class="metric" id="travelMetric" hidden><span class="metric-label">Travel</span><span class="metric-value" data-metric="travel">$19.65</span></div>
-          <div class="metric"><span class="metric-label">Total Compensation</span><span class="metric-value" data-metric="total">$22.19</span></div>
-        </div>
-      </article>
+      </details>
 
-      <article class="card signature-card" aria-labelledby="signatureTitle">
-        <div class="card-heading">
+      <details class="card signature-card">
+        <summary class="card-heading">
           <span class="card-icon" aria-hidden="true">S</span>
           <span class="card-title-wrap">
-            <h2 class="card-title" id="signatureTitle">Preparer Signature</h2>
-            <p class="card-kicker">Name, title, and signature are remembered locally</p>
+            <span class="card-title">Preparer Signature</span>
+            <span class="card-kicker">Name, title, and signature are remembered locally</span>
           </span>
-        </div>
+          <span class="summary-chevron" aria-hidden="true">⌃</span>
+        </summary>
         <div class="card-body">
           <div class="signature-layout">
             <div class="signature-fields">
@@ -2163,12 +2199,12 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </div>
           </div>
         </div>
-      </article>
+      </details>
 
       <div class="action-bar">
         <div class="action-note">
           <span class="action-note-mark" aria-hidden="true">i</span>
-          <span>Settings and signature stay on this device. Employee information is kept as your current draft.</span>
+          <span>Company and annual rates are locked. Employee information and signature stay on this device.</span>
         </div>
         <div class="action-buttons">
           <button class="secondary" id="newEmployeeBtn" type="button">New Employee</button>
@@ -2259,10 +2295,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
                       <div class="rate-row">
                         <span class="rate-amount">$<span class="paper-line" data-bind="inServicePlain"></span></span>
                         <span class="rate-type">In-Service</span>
-                      </div>
-                      <div class="rate-row" data-conditional="travel">
-                        <span class="rate-amount">$<span class="paper-line" data-bind="travelPlain"></span></span>
-                        <span class="rate-type">Travel</span>
                       </div>
                     </div>
 
@@ -2382,29 +2414,30 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
                   </tr>
                   <tr class="benefit-row">
                     <td class="center">Supplement<br>Number 1</td>
-                    <td class="amount">$<span data-bind="ptoPlain"></span></td>
-                    <td>Paid Leave (PTO)</td>
-                    <td><strong data-bind="companyName"></strong><br><span data-bind="companyAddressInline"></span></td>
-                    <td>New York Wage Parity paid leave benefit. 1 hour accrued per <span data-bind="ptoDivisorPlain"></span> hours worked.</td>
+                    <td class="amount">$<span data-bind="supplementalPlain"></span> / $<span data-bind="sohSupplementalPlain"></span><sup>**</sup></td>
+                    <td>Health &amp; Welfare</td>
+                    <td><strong data-bind="benefitProviderName"></strong><br><span data-bind="benefitProviderAddress"></span></td>
+                    <td><span data-bind="planInformation"></span></td>
                   </tr>
                   <tr class="benefit-row">
                     <td class="center">Supplement<br>Number 2</td>
-                    <td class="amount">$<span data-bind="supplementalPlain"></span></td>
-                    <td>Welfare - Minimum Essential Coverage (MEC)</td>
-                    <td><strong data-bind="benefitProviderName"></strong><br><span data-bind="benefitProviderAddress"></span></td>
-                    <td><span data-bind="mecPlanName"></span>. Hourly supplement administered through UHP.</td>
+                    <td class="amount"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr class="benefit-row">
                     <td class="center">Supplement<br>Number 3</td>
-                    <td class="amount">$0.00</td>
-                    <td>Additional Benefits</td>
-                    <td>N/A</td>
-                    <td>No additional benefit listed.</td>
+                    <td class="amount"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
 
               <p class="page-two-note">*If wage supplements are paid as a single payment owed to multiple Taft-Hartley multiemployer plans, list only the following: (1) the total paid for the supplement or benefit package; (2) the types of benefits included in the package, e.g., pension, health and welfare, or other; (3) the name and address of the entity to whom payment is sent; and (4) the relevant CBA or letter of assent as the agreement.</p>
+              <p class="page-two-note"><strong>**Please note:</strong> Wage parity rates are based on the hourly base rate paid. As wage increases, wage parity benefits decrease.</p>
               <p class="page-two-note">List any additional benefits and attach listing to this document.</p>
               <div class="copies-line"><span>Copies of the above listed agreements or summaries may be obtained by:</span><span class="paper-line" data-bind="copiesContact"></span></div>
               <div class="page-two-divider"></div>
@@ -2439,7 +2472,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     </section>
   </main>
 
-  <footer class="project-credit">A Davidowitz Project © <span id="projectYear"></span> · v1.0</footer>
+  <footer class="project-credit">A Davidowitz Project © <span id="projectYear"></span> · v1.1</footer>
 
   <div class="modal" id="signatureModal" role="dialog" aria-modal="true" aria-labelledby="signatureModalTitle">
     <div class="modal-card">
@@ -2462,15 +2495,14 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     (function () {
       "use strict";
 
-      var VERSION = "1.0";
-      var SETTINGS_KEY = "benevolentLS62.settings.v1";
+      var VERSION = "1.1";
       var SIGNATURE_KEY = "benevolentLS62.signature.v1";
       var DRAFT_KEY = "benevolentLS62.draft.v1";
 
       var DEFAULT_SETTINGS = {
         companyName: "Benevolent Home Care LLC",
         companyAddress1: "1021 McDonald Ave",
-        companyAddress2: "Brooklyn NY 11230",
+        companyAddress2: "Brooklyn, NY 11230",
         companyPhone: "718-345-1000",
         companyDba: "",
         companyFein: "",
@@ -2480,10 +2512,9 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         wageParityPortion: "2.54",
         ptoDivisor: "30",
         sohDivisor: "12",
-        travelEnabled: false,
         benefitProviderName: "UHP Administrators",
-        benefitProviderAddress: "1662 61st St, Brooklyn, NY 11204",
-        mecPlanName: "Minimum Essential Coverage (MEC) Plan"
+        benefitProviderAddress: "1662 61 St, Brklyn, NY 11204",
+        planInformation: "Policy #001248"
       };
 
       var DEFAULT_SIGNATURE = {
@@ -2530,8 +2561,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       }
 
       function loadStoredState() {
-        var settings = safeParse(SETTINGS_KEY, DEFAULT_SETTINGS);
-        Object.keys(DEFAULT_SETTINGS).forEach(function (key) { setControlValue(key, settings[key]); });
+        Object.keys(DEFAULT_SETTINGS).forEach(function (key) { setControlValue(key, DEFAULT_SETTINGS[key]); });
 
         var profile = safeParse(SIGNATURE_KEY, DEFAULT_SIGNATURE);
         setControlValue("preparerName", profile.name);
@@ -2549,14 +2579,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         if (radio) radio.checked = true;
       }
 
-      function collectSettings() {
-        var result = {};
-        document.querySelectorAll('[data-store="settings"]').forEach(function (element) {
-          result[element.id] = element.type === "checkbox" ? element.checked : element.value;
-        });
-        return result;
-      }
-
       function collectDraft() {
         return {
           employeeName: byId("employeeName").value,
@@ -2566,11 +2588,6 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           overrideEnabled: byId("overrideEnabled").checked,
           overrideRate: byId("overrideRate").value
         };
-      }
-
-      function saveSettings() {
-        try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(collectSettings())); } catch (error) {}
-        flashSaved();
       }
 
       function saveDraft() {
@@ -2655,15 +2672,15 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         if (minimumWage === null || wageParity === null || ptoDivisor === null || sohDivisor === null) return null;
         if (minimumWage < 0 || wageParity < 0 || ptoDivisor <= 0 || sohDivisor <= 0) return null;
 
-        var total = minimumWage + wageParity;
-        var base = overrideEnabled ? overrideRate : minimumWage;
+        var total = roundCurrency(minimumWage + wageParity);
+        var base = roundCurrency(overrideEnabled ? overrideRate : minimumWage);
         if (base === null || base < minimumWage || base > total) return null;
 
-        var pto = base / ptoDivisor;
-        var supplemental = Math.max(0, total - base - pto);
-        var soh = base + (minimumWage / sohDivisor);
-        var sohPto = soh / ptoDivisor;
-        var sohSupplemental = Math.max(0, total - soh - sohPto);
+        var pto = roundCurrency(base / ptoDivisor);
+        var supplemental = roundCurrency(Math.max(0, total - base - pto));
+        var soh = roundCurrency(base + (minimumWage / sohDivisor));
+        var sohPto = roundCurrency(soh / ptoDivisor);
+        var sohSupplemental = roundCurrency(Math.max(0, total - soh - sohPto));
 
         return {
           minimumWage: minimumWage,
@@ -2672,13 +2689,14 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           base: base,
           pto: pto,
           supplemental: supplemental,
+          regularTotal: total,
           soh: soh,
           sohPto: sohPto,
           sohSupplemental: sohSupplemental,
-          ot: base * 1.5,
-          sohOt: soh * 1.5,
+          sohTotal: total,
+          ot: roundCurrency(base * 1.5),
+          sohOt: roundCurrency(soh * 1.5),
           inService: minimumWage,
-          travel: minimumWage,
           ptoDivisor: ptoDivisor,
           sohDivisor: sohDivisor
         };
@@ -2702,7 +2720,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           ["regularPayday", "Enter the regular payday."],
           ["benefitProviderName", "Enter the benefit provider name."],
           ["benefitProviderAddress", "Enter the benefit provider address."],
-          ["mecPlanName", "Enter the MEC plan information."],
+          ["planInformation", "Enter the UHP policy information."],
           ["employeeName", "Enter the employee name."],
           ["hireDate", "Select the hire date."],
           ["language", "Enter the employee's primary language."],
@@ -2740,7 +2758,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 
         [
           "companyName", "companyAddress1", "companyAddress2", "companyPhone", "companyDba", "companyFein",
-          "regularPayday", "payFrequency", "benefitProviderName", "benefitProviderAddress", "mecPlanName",
+          "regularPayday", "payFrequency", "benefitProviderName", "benefitProviderAddress", "planInformation",
           "minimumWage", "wageParityPortion", "ptoDivisor", "sohDivisor", "employeeName", "hireDate",
           "language", "overrideRate", "preparerName", "preparerTitle"
         ].forEach(function (id) { setError(id, errors[id] || ""); });
@@ -2788,13 +2806,14 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         var placeholder = "--";
         var language = textValue("language") || "English";
         var english = language.toLowerCase() === "english";
+        var translationNotice = byId("translationNotice");
         var frequency = textValue("payFrequency");
         var preparerCombined = [textValue("preparerName"), textValue("preparerTitle")].filter(Boolean).join(", ");
         var addressInline = companyAddress(false);
 
         setBoundText("companyName", textValue("companyName") || "Benevolent Home Care LLC");
-        setBoundText("companyDbaDisplay", textValue("companyDba") || "N/A");
-        setBoundText("companyFeinDisplay", textValue("companyFein") || "N/A");
+        setBoundText("companyDbaDisplay", textValue("companyDba") || " ");
+        setBoundText("companyFeinDisplay", textValue("companyFein") || " ");
         setBoundText("companyAddress", companyAddress(true) || " ");
         setBoundText("companyAddressInline", addressInline || " ");
         setBoundText("companyPhone", textValue("companyPhone") || " ");
@@ -2806,7 +2825,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         setBoundText("preparerCombined", preparerCombined || " ");
         setBoundText("benefitProviderName", textValue("benefitProviderName") || " ");
         setBoundText("benefitProviderAddress", textValue("benefitProviderAddress") || " ");
-        setBoundText("mecPlanName", textValue("mecPlanName") || " ");
+        setBoundText("planInformation", textValue("planInformation") || " ");
         setBoundText("copiesContact", [textValue("preparerTitle"), textValue("companyName"), textValue("companyPhone")].filter(Boolean).join(", "));
 
         setCheck("weekly", frequency === "Weekly");
@@ -2814,15 +2833,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         setCheck("otherPay", frequency === "Other");
         setBoundText("otherPayText", frequency === "Other" ? "Other" : "");
         setCheck("languageEnglish", english);
-        setCheck("languageOther", !english);
+        setCheck("languageOther", false);
         setCheck("page2Yes", english);
         setCheck("page2No", !english);
+        translationNotice.hidden = english;
+        translationNotice.textContent = english ? "" : "This app creates the English LS62. Also provide the official NYSDOL " + language + " LS62 to the employee.";
 
-        var travelEnabled = byId("travelEnabled").checked;
-        document.querySelectorAll('[data-conditional="travel"]').forEach(function (element) { element.hidden = !travelEnabled; });
-        byId("travelMetric").hidden = !travelEnabled;
-
-        var metricNames = ["base", "pto", "supplemental", "soh", "sohPto", "sohSupplemental", "ot", "sohOt", "inService", "travel", "total"];
+        var metricNames = ["base", "pto", "supplemental", "regularTotal", "soh", "sohPto", "sohSupplemental", "sohTotal", "ot", "sohOt", "inService", "total"];
         metricNames.forEach(function (name) {
           var value = calculation ? calculation[name] : NaN;
           document.querySelectorAll('[data-metric="' + name + '"]').forEach(function (element) { element.textContent = formatMoney(value); });
@@ -2969,6 +2986,8 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           var firstId = Object.keys(validation.errors)[0];
           var first = firstId ? byId(firstId) : null;
           if (first) {
+            var containingCard = first.closest("details");
+            if (containingCard) containingCard.open = true;
             first.scrollIntoView({ behavior: "smooth", block: "center" });
             setTimeout(function () { first.focus(); }, 350);
           }
@@ -3049,23 +3068,11 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         showAllErrors = false;
         saveDraft();
         updateAll();
+        byId("employeeCard").open = true;
         byId("employeeName").focus();
         window.scrollTo({ top: byId("employeeCard").offsetTop - 90, behavior: "smooth" });
         showToast("Ready for a new employee.");
       }
-
-      document.querySelectorAll('[data-store="settings"]').forEach(function (element) {
-        element.addEventListener("input", function () {
-          touched.add(element.id);
-          saveSettings();
-          updateAll();
-        });
-        element.addEventListener("change", function () {
-          touched.add(element.id);
-          saveSettings();
-          updateAll();
-        });
-      });
 
       document.querySelectorAll('[data-store="draft"]').forEach(function (element) {
         element.addEventListener("input", function () {
@@ -3093,19 +3100,12 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         });
       });
 
-      ["minimumWage", "wageParityPortion", "overrideRate"].forEach(function (id) {
+      ["overrideRate"].forEach(function (id) {
         byId(id).addEventListener("blur", function () {
           normalizeMoneyField(byId(id));
-          if (id === "overrideRate") saveDraft(); else saveSettings();
+          saveDraft();
           updateAll();
         });
-      });
-
-      byId("companyFein").addEventListener("input", function () {
-        var digits = byId("companyFein").value.replace(/\D/g, "").slice(0, 9);
-        byId("companyFein").value = digits.length > 2 ? digits.slice(0,2) + "-" + digits.slice(2) : digits;
-        saveSettings();
-        updateAll();
       });
 
       canvas.addEventListener("pointerdown", startDrawing);
