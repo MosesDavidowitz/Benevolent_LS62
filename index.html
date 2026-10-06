@@ -2675,13 +2675,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           <div class="annual-settings-grid">
             <div class="annual-field full">
               <span class="field-label">Applicable year</span>
-              <div class="annual-display-value" id="annualYearDisplay">2026</div>
-              <input id="annualYear" type="hidden" value="2026">
+              <div class="annual-display-value" id="annualYearDisplay">2027</div>
+              <input id="annualYear" type="hidden" value="2027">
               <div class="field-error" id="annualYearError"></div>
             </div>
             <div class="annual-field">
               <label for="minimumWage">Minimum Wage</label>
-              <div class="input-prefix"><span>$</span><input id="minimumWage" data-annual-input type="number" min="0" step="0.01" inputmode="decimal" value="19.65" readonly></div>
+              <div class="input-prefix"><span>$</span><input id="minimumWage" data-annual-input type="number" min="0" step="0.01" inputmode="decimal" value="20.00" readonly></div>
               <div class="field-error" id="minimumWageError"></div>
             </div>
             <div class="annual-field">
@@ -2691,7 +2691,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </div>
             <div class="annual-field full">
               <label for="totalCompensation">Total Compensation</label>
-              <div class="input-prefix"><span>$</span><input id="totalCompensation" data-annual-input type="number" min="0" step="0.01" inputmode="decimal" value="22.19" readonly></div>
+              <div class="input-prefix"><span>$</span><input id="totalCompensation" data-annual-input type="number" min="0" step="0.01" inputmode="decimal" value="22.54" readonly></div>
               <div class="field-error" id="totalCompensationError"></div>
             </div>
             <div class="annual-field">
@@ -2705,7 +2705,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
               <div class="field-error" id="sohDivisorError"></div>
             </div>
           </div>
-          <p class="annual-edit-note" id="annualEditNote">Locked. Select the pencil and enter the access PIN to run a temporary annual-rate simulation. Refreshing the page restores the 2026 defaults.</p>
+          <p class="annual-edit-note" id="annualEditNote">Locked. Select the pencil and enter the access PIN to run a temporary annual-rate simulation. Refreshing the page restores the 2027 defaults.</p>
         </div>
       </details>
 
@@ -2791,7 +2791,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             </div>
             <div class="field full override-field" id="overrideField" hidden>
               <label for="overrideRate">Employee Base Rate</label>
-              <div class="input-prefix"><span>$</span><input id="overrideRate" data-store="draft" type="number" min="19.65" step="0.01" inputmode="decimal" placeholder="19.65"></div>
+              <div class="input-prefix"><span>$</span><input id="overrideRate" data-store="draft" type="number" min="20.00" step="0.01" inputmode="decimal" placeholder="20.00"></div>
               <div class="field-error" id="overrideRateError"></div>
             </div>
             <section class="pay-comparison field full" id="overrideRateNotice" aria-labelledby="payComparisonTitle" aria-live="polite" hidden>
@@ -3158,10 +3158,10 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         companyFein: "",
         regularPayday: "Friday",
         payFrequency: "Weekly",
-        annualYear: "2026",
-        minimumWage: "19.65",
+        annualYear: "2027",
+        minimumWage: "20.00",
         wageParityPortion: "2.54",
-        totalCompensation: "22.19",
+        totalCompensation: "22.54",
         ptoDivisor: "30",
         sohDivisor: "12",
         benefitProviderName: "UHP Administrators",
@@ -4054,7 +4054,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         var button = byId("annualEditBtn");
         card.classList.toggle("editing", annualEditing);
         document.querySelectorAll("[data-annual-input]").forEach(function (input) {
-          input.readOnly = !annualEditing;
+          input.readOnly = input.id === "totalCompensation" || !annualEditing;
         });
         button.textContent = annualEditing ? "✓" : "✎";
         button.setAttribute("aria-label", annualEditing ? "Finish editing Annual Settings" : "Edit Annual Settings");
